@@ -1,0 +1,11 @@
+Crossy Road/Frogger like game with a Harry Potter as a character:
+1. Display character
+2. Make character move around
+3. Make obstacles => wall with door in it - the door moves left and right
+4. Harry Potter can only go trough the door
+5. Character will collect snitches 
+6. Score is dependent on the collected items 
+7. Should die when he hits the wall
+8. Index webpage - play, score table
+9. When game is over, ask for name for the score table if the score is high enough
+10. Score table page should have a play button - to play again
