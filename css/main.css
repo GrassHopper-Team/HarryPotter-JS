@@ -1,6 +1,17 @@
+@font-face {
+    font-family: HarryPotterCustomFont;
+    src: url('../fonts/HARRYP__.TTF');
+}
+
+@font-face {
+    font-family: LumosCustomFont;
+    src: url('../fonts/LUMOS.TTF');
+}
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box; 
 }
 
 body{
@@ -28,7 +39,7 @@ body{
 .button {
   display: block;
   width: 150px;
-  margin: 10px auto;
+  margin: 10px 150px;
   height: 30px;
   line-height: 30px;
   border: 1px solid black;
@@ -56,4 +67,47 @@ canvas {
 
 .sprite-image {
     display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+#creditsWrapper {
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  width: 450px;
+  margin-left: -200px;
+  font: 300 30px/1 'Lumos', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  animation: 60s credits linear infinite;
+}
+
+.game {
+  margin-bottom: 50px;
+  font-size: 100px;
+  font-family: 'HarryPotterCustomFont';
+  text-transform: capitalize;
+}
+
+.team {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+ .name {
+  margin-bottom: 50px;
+  font-size: 35px;
+}
+
+@keyframes credits {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -500%;
+  }
 }

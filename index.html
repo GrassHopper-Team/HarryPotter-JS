@@ -2,32 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Harry Potter Game</title>
-    <link rel="stylesheet" href="./css/main.css">
+  <meta charset="UTF-8">
+  <title>Harry Potter Game</title>
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-    <div id="menu" class="main">
-      <div id="main">
-        <h1>Harry Potter Game</h1>
-        <ul>
-          <li><a href="#" class="button play">Start Game</a></li>
-          <li><a href="#" class="button credits">High Score</a></li>
-        </ul>
-      </div>
-    </div>  
+  <div id="menu" class="main">
+    <div id="main">
+      <h1>Harry Potter Game</h1>
+      <ul>
+        <li><a href="#" class="button play">Start Game</a></li>
+        <li><a href="#" class="button score">High Score</a></li>
+        <li><a href="#" class="button credits">Credits</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="creditsWrapper" class="hidden">
+    <div class='team'>Team GrassHopper</div>
+    <div class='game'>Harry Potter</div>
+    <div class='name'>Yasen Ivanov</div>
+    <div class='name'>Cvetozar Kalchev</div>
+    <div class='name'>Emilian Panagyurski</div>
+    <div class='name'>Milena Sapunova</div>
+    <div class='name'>Aleksandar Ikonomov</div>
+    <div class='name'>Mihael Ivanova</div>
+    <div class='name'>Plamen Lakov</div>
+  </div>
 
-    <canvas id="background-canvas"></canvas>
-    <canvas id="player-canvas"></canvas>
-    <img class="sprite-image" src="./imgs/harry-potter-sprite-smaller2.png" id="harry-sprite" />
-    <img class="sprite-image" src="./imgs/canvasBackground-floor2.jpg" id="canvas-background-img" />
-    <img class="sprite-image" src="./imgs/frame.png" id="canvas-background-frame" />
-    <script src="./js/background.js"></script>
-    <script src="./js/sprite.js"></script>
-    <script src="./js/physical-body.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/start.js"></script>
+  <canvas id="background-canvas"></canvas>
+  <canvas id="player-canvas"></canvas>
+  <img class="sprite-image" src="./imgs/harry-potter-sprite-smaller3.png" id="harry-sprite" />
+  <img class="sprite-image" src="./imgs/canvasBackground-floor2.jpg" id="canvas-background-img" />
+  <img class="sprite-image" src="./imgs/frame.png" id="canvas-background-frame" />
+  <script src="./js/background.js"></script>
+  <script src="./js/sprite.js"></script>
+  <script src="./js/physical-body.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/start.js"></script>
 </body>
 
 </html>
