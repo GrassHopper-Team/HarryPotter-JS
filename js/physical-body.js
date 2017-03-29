@@ -1,14 +1,17 @@
 function createPhysicalBody(options) {
-
     'use strict';
-    function move(maxCoordinates) {
+
+    function move(canvasDimensions) {
         var lastCoordinates = { x: this.coordinates.x, y: this.coordinates.y };
 
         var newX = this.coordinates.x + this.speed.x,
             newY = this.coordinates.y + this.speed.y;
 
-        if (newX < 0 || newX > maxCoordinates.x ||
-            newY < 0 || newY > maxCoordinates.y) {
+        var maxX = canvasDimensions.x - this.width;
+        var maxY = canvasDimensions.y - this.height;
+
+        if (newX < 0 || newX > maxX ||
+            newY < 0 || newY > maxY) {
             return lastCoordinates;
         }
 
@@ -31,6 +34,8 @@ function createPhysicalBody(options) {
     var physicalBody = {
         coordinates: options.coordinates,
         speed: options.speed || { x: 0, y: 0 },
+        exists: true,
+        harmful: options.harmful || false,
         height: options.height,
         width: options.width,
         radius: (options.width + options.height) / 4,

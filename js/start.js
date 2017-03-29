@@ -14,13 +14,23 @@ function start() {
     createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
-        playerImg = document.getElementById('harry-sprite'),
-        coinImg = document.getElementById('coin-sprite'),
-        holeImg = document.getElementById('hole-sprite');
-
+        playerImg = document.getElementById('harry-sprite');
 
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
+
+
+    // TODO: Add function to create array of elements
+
+    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT}, 3, 3);
+
+
+    var otherBody = createPhysicalBody({
+        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
+        speed: { x: 0, y: 0 },
+        width: 500,
+        height: 300
+    });
 
     var harrySprite = createSprite({
         sprite: playerImg,
@@ -43,47 +53,6 @@ function start() {
         height: harrySprite.height
     });
 
-    /// TODO: Add function to create array of elements
-    var otherBody = createPhysicalBody({
-        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
-        speed: { x: 0, y: 0 },
-        width: 500,
-        height: 300
-    });
-
-    var coinSprite = createSprite({
-        sprite: coinImg,
-        context: playerContext,
-        width: coinImg.width / 7,
-        height: coinImg.height,
-        rowNumber: 0,
-        numberOfFrames: 6,
-        loopTicksPerFrame: 8
-    });
-
-    var coinBody = createPhysicalBody({
-        coordinates: { x: (Math.random() * 1000) % (WIDTH - 100), y: (Math.random() * 1000) % (HEIGHT - 100) },
-        speed: { x: 0, y: 0 },
-        width: 10,
-        height: 10
-    });
-
-    var holeSprite = createSprite({
-        sprite: holeImg,
-        context: playerContext,
-        width: holeImg.width,
-        height: holeImg.height,
-        rowNumber: 0,
-        numberOfFrames: 1,
-        loopTicksPerFrame: 1
-    });
-
-    var holeBody = createPhysicalBody({
-        coordinates: { x: (Math.random() * 1000) % (WIDTH - 100), y: (Math.random() * 1000) % (HEIGHT - 100) },
-        speed: { x: 0, y: 0 },
-        width: 50,
-        height: 50
-    });
 
     window.addEventListener('keydown', function (event) {
         switch (event.keyCode) {
@@ -127,17 +96,16 @@ function start() {
 
     function gameLoop() {
 
-        var lastHarryCoordinates = harryBody.move({ x: WIDTH - harrySprite.width, y: HEIGHT - harrySprite.height });
+        obstacles.updateAll();
 
-
-        if (harryBody.collidesWith(otherBody) === true) {
-            alert('umre');
-            return;
-        };
-
+        var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT});
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
-        coinSprite.render(coinBody.coordinates, coinBody.coordinates).update();
-        holeSprite.render(holeBody.coordinates, holeBody.coordinates).update();
+
+
+        // if (harryBody.collidesWith(otherBody) === true) {
+        //     alert('umre');
+        //     return;
+        // };
 
         window.requestAnimationFrame(gameLoop);
     }
