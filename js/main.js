@@ -30,6 +30,13 @@ function mainMenu() {
   show(main);
 };
 
+function createHighScore(){
+  var input = document.getElementById("name").value;
+  scores.update({name: input, points: currScore});
+  input.value = '';
+  createScoreTable(scores);
+}
+
 playBtn.addEventListener('click', function () {
   hide(main);
   active = true;
@@ -38,7 +45,6 @@ playBtn.addEventListener('click', function () {
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
-  createScoreTable(scores);
   show(highScore);
 });
 
@@ -53,8 +59,7 @@ creditsBtn.addEventListener('click', function () {
 });
 
 submitBtn.addEventListener('click', function(){
-  var input = document.getElementById("name").value;
-  scores.update({name: input, points: currScore});
+  createHighScore();
   hide(endScreen);
   show(main);
 });
