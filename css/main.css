@@ -155,18 +155,24 @@ canvas {
     margin: 50px 0 0 50px;
 }
 
+.smallerCanvas{
+    margin: 73px 0 0 82px;
+}
+
 #background-canvas {
     z-index: 1;
 }
 
 #obstacle-canvas{
     z-index: 10;
-    margin: 73px 0 0 82px;
+}
+
+#bolt-canvas{
+    z-index: 500;
 }
 
 #player-canvas {
     z-index: 100;
-    margin: 73px 0 0 80px;
 }
 
 .sprite-image {

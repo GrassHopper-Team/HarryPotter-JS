@@ -9,6 +9,8 @@ let topScore = document.getElementById('top-scores');
 let creditsInfo = document.querySelector('#creditsWrapper');
 let endScreen = document.querySelector('.end-screen');
 
+var currScore = 0;
+var active = true;
 let playBtn = document.querySelector('#playBtn');
 let scoreBtn = document.querySelector('#scoreBtn');
 let creditsBtn = document.querySelector('#creditsBtn');
@@ -30,12 +32,13 @@ function mainMenu() {
 
 playBtn.addEventListener('click', function () {
   hide(main);
+  active = true;
   start();
 });
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
-  createScoreTable(scores.scores);
+  createScoreTable(scores);
   show(highScore);
 });
 
@@ -50,14 +53,16 @@ creditsBtn.addEventListener('click', function () {
 });
 
 submitBtn.addEventListener('click', function(){
+  var input = document.getElementById("name").value;
+  scores.update({name: input, points: currScore});
   hide(endScreen);
-  //Almost done!(storing the score and name)
   show(main);
 });
 
 window.onkeydown = function (event) {
   // Pressing ESC should hide credits/score and show the menu
   if (event.keyCode == 27) {
+    hide(highScore);
     hide(creditsInfo);
     show(main);
   }

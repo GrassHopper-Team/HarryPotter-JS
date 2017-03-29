@@ -4,7 +4,7 @@ function createBackground(dimensions) {
         context = canvas.getContext('2d'),
         backgroundIMG = document.getElementById('canvas-background-img'),
         frameIMG = document.getElementById('canvas-background-frame');
-
+        canvas.style.display = 'block';
     canvas.width = dimensions.width;
     canvas.height = dimensions.height;
 

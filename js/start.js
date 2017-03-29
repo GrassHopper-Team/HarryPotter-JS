@@ -1,5 +1,4 @@
 function start() {
-
     'use strict';
     const WIDTH = 900,
         HEIGHT = 600,
@@ -22,13 +21,11 @@ function start() {
 
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
-        playerImg = document.getElementById('harry-sprite'),
-        boltImg = document.getElementById('bolt-sprite');
+        playerImg = document.getElementById('harry-sprite');
+    playerCanvas.style.display = 'block';
 
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
-
-    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, totalCoins, totalHoles);
 
     var harrySprite = createSprite({
         sprite: playerImg,
@@ -50,34 +47,8 @@ function start() {
         height: harrySprite.height
     });
 
-    var holeBody = createPhysicalBody({
-        coordinates: { x: (Math.random() * 1000) % (WIDTH - 100), y: (Math.random() * 1000) % (HEIGHT - 100) },
-        speed: { x: 0, y: 0 },
-        width: 50,
-        height: 50
-    });
+    var obstacles = createObstacles({ canvasDimensions: { x: WIDTH, y: HEIGHT }, numberOfCoins: totalCoins, numberOfHoles: totalHoles, harry: harryBody });
 
-    var boltSprite = createSprite({
-        sprite: boltImg,
-        context: playerContext,
-        width: boltImg.width / 4,
-        height: boltImg.height,
-        rowNumber: 0,
-        numberOfFrames: 80,
-        loopTicksPerFrame: 4
-    })
-
-    const boltInitialX = (Math.random() * 1000) % (WIDTH - 100),
-        boltInitialY = 0;
-
-    var boltBody = createPhysicalBody({
-        coordinates: { x: boltInitialX, y: boltInitialY },
-        speed: { x: 0, y: 0 },
-        width: boltSprite.width,
-        height: boltImg.height
-    });
-
-    let map = {37: false, 38: false, 39: false, 40: false};
     window.addEventListener('keydown', function (event) {
         switch (event.keyCode) {
             case 37:
@@ -123,11 +94,14 @@ function start() {
     });
 
     function gameLoop() {
+
+        if (harryBody.exists === false) {
+            stop(currentScore);
+        }
         obstacles.updateAll();
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
-        boltSprite.render(boltBody.coordinates, boltBody.coordinates).update();
 
         let allObstacles = obstacles.allObstacles;
         for (let i = 0; i < allObstacles.length; i++) {
@@ -145,7 +119,9 @@ function start() {
             }
         }
 
-        window.requestAnimationFrame(gameLoop);
+        if (active) {
+            window.requestAnimationFrame(gameLoop);
+        }
     }
 
     gameLoop();

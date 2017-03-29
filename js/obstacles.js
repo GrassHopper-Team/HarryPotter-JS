@@ -1,40 +1,38 @@
-function createObstacles(canvasDimensions, numberOfCoins, numberOfHoles) {
+function createObstacles(options) {
     'use strict';
 
-    function getRandomInRange(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    function getRandomPositionInCanvas(width, height) {
-        let x = getRandomInRange(0, canvasDimensions.x) - width;
-        let y = getRandomInRange(0, canvasDimensions.y) - height;
-
-        if (x < 0) {
-            x = 0;
-        }
-
-        if (y < 0) {
-            y = 0;
-        }
-
-        return {
-            x: x,
-            y: y
-        }
-    }
-
-    const obstacleCanvas = document.getElementById('obstacle-canvas'),
+    const obstacleCanvas = document.querySelector('#obstacle-canvas'),
         obstacleContext = obstacleCanvas.getContext('2d'),
-        coinImg = document.getElementById('coin-sprite'),
-        holeImg = document.getElementById('hole-sprite'),
-        coinWidth = coinImg.width / 7,
-        coinHeight = coinImg.height;
+        boltCanvas = document.querySelector('#bolt-canvas'),
+        boltContext = boltCanvas.getContext('2d');
+
+    var canvasDimensions = options.canvasDimensions;
+    var numberOfCoins = options.numberOfCoins || 5;
+    var numberOfHoles = options.numberOfHoles || 5;
+    var harryBody = options.harry;
 
     obstacleCanvas.width = canvasDimensions.x;
     obstacleCanvas.height = canvasDimensions.y;
+    boltCanvas.width = canvasDimensions.x;
+    boltCanvas.height = canvasDimensions.y;
 
-    numberOfCoins = numberOfCoins || 5;
-    numberOfHoles = numberOfHoles || 5;
+    const coinImg = document.querySelector('#coin-sprite'),
+        holeImg = document.querySelector('#hole-sprite'),
+        boltImg = document.querySelector('#bolt-sprite');
+
+    const coinWidth = coinImg.width / 7,
+        coinHeight = coinImg.height,
+        boltFrames = 4,
+        boltloopsPerFrame = 3,
+        boltWidth = boltImg.width / boltFrames,
+        holeFrames = 0,
+        coinFrames = 6,
+        coinLoopPerFrame = 4,
+        holeLoopsPerFrame = 0,
+        loopsPerTick = 50;
+
+    let loopsCount = 0;
+    obstacleCanvas.style.display = 'block'; /// TODO: MAKE through MAIN and CSS
 
     let allCoinsSprites = [];
     let allCoinsBodies = [];
@@ -42,78 +40,103 @@ function createObstacles(canvasDimensions, numberOfCoins, numberOfHoles) {
     let allHolesSprites = [];
     let allHolesBodies = [];
 
-    for (let coin = 0; coin < numberOfCoins; coin++) {
-        let coinSprite = createSprite({
-            sprite: coinImg,
-            context: obstacleContext,
-            width: coinWidth,
-            height: coinHeight,
-            rowNumber: 0,
-            numberOfFrames: 6,
-            loopTicksPerFrame: 8
-        });
+    var boltSprite = createSprite({
+        sprite: boltImg,
+        context: boltContext,
+        width: boltWidth,
+        height: boltImg.height,
+        rowNumber: 0,
+        numberOfFrames: boltFrames,
+        loopTicksPerFrame: boltloopsPerFrame
+    });
 
-        let position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height);
+    const boltInitialX = getRandomPositionInCanvas(boltSprite.width, boltSprite.height).x,
+        boltInitialY = 0;
 
-        let coinBody = createPhysicalBody({
-            coordinates: { x: position.x, y: position.y },
-            speed: { x: 0, y: 0 },
-            harmful: false,
-            width: coinWidth,
-            height: coinHeight
-        });
+    var boltBody = createPhysicalBody({
+        coordinates: { x: boltInitialX, y: boltInitialY },
+        speed: { x: 0, y: 0 },
+        harmful: true,
+        width: boltSprite.width,
+        height: boltImg.height
+    });
 
-        while (checkIfObstacleAlreadyThere(coinBody)) {
-            position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height)
-            coinBody.coordinates.x = position.x;
-            coinBody.coordinates.y = position.y;
+    createCoins();
+    createHoles();
+    updateHoles();
+
+    function createHoles() {
+        for (let hole = 0; hole < numberOfHoles; hole++) {
+            let holeSprite = createSprite({
+                sprite: holeImg,
+                context: obstacleContext,
+                width: holeImg.width,
+                height: holeImg.height,
+                rowNumber: 0,
+                numberOfFrames: holeFrames,
+                loopTicksPerFrame: holeLoopsPerFrame
+            });
+
+            let position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height);
+
+            let holeBody = createPhysicalBody({
+                coordinates: { x: position.x, y: position.y },
+                speed: { x: 0, y: 0 },
+                harmful: true,
+                width: holeSprite.width,
+                height: holeSprite.height
+            });
+
+            while (checkIfObstacleAlreadyThere(holeBody)) {
+                position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height)
+                holeBody.coordinates.x = position.x;
+                holeBody.coordinates.y = position.y;
+            }
+
+            allHolesSprites.push(holeSprite);
+            allHolesBodies.push(holeBody);
         }
-
-        allCoinsSprites.push(coinSprite);
-        allCoinsBodies.push(coinBody);
     }
 
-    for (let hole = 0; hole < numberOfHoles; hole++) {
-        let holeSprite = createSprite({
-            sprite: holeImg,
-            context: obstacleContext,
-            width: holeImg.width,
-            height: holeImg.height,
-            rowNumber: 0,
-            numberOfFrames: 1,
-            loopTicksPerFrame: 1
-        });
+    function createCoins() {
+        for (let coin = 0; coin < numberOfCoins; coin++) {
+            let coinSprite = createSprite({
+                sprite: coinImg,
+                context: obstacleContext,
+                width: coinWidth,
+                height: coinHeight,
+                rowNumber: 0,
+                numberOfFrames: coinFrames,
+                loopTicksPerFrame: coinLoopPerFrame
+            });
 
-        let position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height);
+            let position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height);
 
-        let holeBody = createPhysicalBody({
-            coordinates: { x: position.x, y: position.y },
-            speed: { x: 0, y: 0 },
-            harmful: true,
-            width: holeSprite.width,
-            height: holeSprite.height
-        });
+            let coinBody = createPhysicalBody({
+                coordinates: { x: position.x, y: position.y },
+                speed: { x: 0, y: 0 },
+                harmful: false,
+                width: coinWidth,
+                height: coinHeight
+            });
 
-        while (checkIfObstacleAlreadyThere(holeBody)) {
-            position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height)
-            holeBody.coordinates.x = position.x;
-            holeBody.coordinates.y = position.y;
+            while (checkIfObstacleAlreadyThere(coinBody)) {
+                position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height)
+                coinBody.coordinates.x = position.x;
+                coinBody.coordinates.y = position.y;
+            }
+
+            allCoinsSprites.push(coinSprite);
+            allCoinsBodies.push(coinBody);
         }
-
-        allHolesSprites.push(holeSprite);
-        allHolesBodies.push(holeBody);
-    }
-
-
-    for (let hole = 0; hole < allHolesBodies.length; hole++) {
-        let currentHoleBody = allHolesBodies[hole];
-        let lastHoleCoordinates = currentHoleBody.move(canvasDimensions);
-
-        let currentHoleSprite = allHolesSprites[hole];
-        currentHoleSprite.render(lastHoleCoordinates, currentHoleBody.coordinates).update();
     }
 
     function updateAll() {
+        updateAllCoins();
+        updateBolt();
+    }
+
+    function updateAllCoins() {
         for (let coin = 0; coin < allCoinsBodies.length; coin++) {
             let currentCoinBody = allCoinsBodies[coin];
             let lastCoinCoordinates = currentCoinBody.move(canvasDimensions);
@@ -138,12 +161,41 @@ function createObstacles(canvasDimensions, numberOfCoins, numberOfHoles) {
         }
     }
 
+    function updateHoles() {
+        for (let hole = 0; hole < allHolesBodies.length; hole++) {
+            let currentHoleBody = allHolesBodies[hole];
+            let lastHoleCoordinates = currentHoleBody.move(canvasDimensions);
+
+            let currentHoleSprite = allHolesSprites[hole];
+            currentHoleSprite.render(lastHoleCoordinates, currentHoleBody.coordinates).update();
+        }
+    }
+
+    function updateBolt() {
+        var lastBoltCoordinates = boltBody.move(canvasDimensions);
+
+        if (loopsCount / loopsPerTick > 1) {
+            let lastBoltCoordinates = boltBody.coordinates;
+
+            if (boltBody.coordinates.x + boltWidth > canvasDimensions.x - boltWidth) {
+                boltBody.coordinates.x = 0;
+            }
+            else {
+                boltBody.coordinates.x += boltWidth;
+            }
+            loopsCount = 0;
+        }
+
+        boltSprite.render(lastBoltCoordinates, boltBody.coordinates).update();
+        loopsCount++;
+    }
+
     function checkIfObstacleAlreadyThere(body) {
         let allBodies = allCoinsBodies.concat(allHolesBodies);
 
         for (let i = 0; i < allBodies.length; i++) {
             let currentBody = allBodies[i];
-            if (currentBody !== body && currentBody.collidesWith(body)) {
+            if (currentBody !== body && (currentBody.collidesWith(body) || harryBody.collidesWith(body))) {
                 return true;
             }
         }
@@ -151,9 +203,31 @@ function createObstacles(canvasDimensions, numberOfCoins, numberOfHoles) {
         return false;
     }
 
+    function getRandomInRange(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function getRandomPositionInCanvas(width, height) {
+        let x = getRandomInRange(0, canvasDimensions.x) - width;
+        let y = getRandomInRange(0, canvasDimensions.y) - height;
+
+        if (x < 0) {
+            x = 0;
+        }
+
+        if (y < 0) {
+            y = 0;
+        }
+
+        return {
+            x: x,
+            y: y
+        }
+    }
+
     // TODO: Create deep copy of the objects
     return {
-        allObstacles: allCoinsBodies.concat(allHolesBodies),
+        allObstacles: allCoinsBodies.concat(allHolesBodies).concat(boltBody),
         updateAll: updateAll
     }
 }
