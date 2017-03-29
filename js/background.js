@@ -8,8 +8,8 @@ function createBackground(dimensions) {
     canvas.width = dimensions.width;
     canvas.height = dimensions.height;
 
-    var ptrn = context.createPattern(backgroundIMG, 'repeat');
-    context.fillStyle = ptrn;
+    var pattern = context.createPattern(backgroundIMG, 'repeat');
+    context.fillStyle = pattern;
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.drawImage(frameIMG, 0, 0, canvas.width, canvas.height);
 }

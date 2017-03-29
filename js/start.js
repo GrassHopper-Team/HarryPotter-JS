@@ -1,5 +1,5 @@
-function start(){
-    
+function start() {
+
     'use strict';
     const WIDTH = 800,
         HEIGHT = 500,
