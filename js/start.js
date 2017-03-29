@@ -16,12 +16,14 @@ function start() {
         rowWalkRight = 2,
         rowWalkLeft = 3;
 
-    let currentScore = 0;
+    let currentScore = scoreCounter();
+    currentScore.createDiv();
 
     createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
-        playerImg = document.getElementById('harry-sprite');
+        playerImg = document.getElementById('harry-sprite'),
+        boltImg = document.getElementById('bolt-sprite');
 
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
@@ -57,6 +59,33 @@ function start() {
         speed: { x: 0, y: 0 },
         width: harrySprite.width,
         height: harrySprite.height
+    });
+
+    var holeBody = createPhysicalBody({
+        coordinates: { x: (Math.random()*1000) % (WIDTH - 100), y: (Math.random()*1000) % (HEIGHT - 100) },
+        speed: { x: 0, y: 0 },
+        width: 50,
+        height: 50
+    });
+
+    var boltSprite = createSprite({
+        sprite:boltImg,
+        context: playerContext,
+        width: boltImg.width/4,
+        height: boltImg.height ,
+        rowNumber: 0,
+        numberOfFrames:80,
+        loopTicksPerFrame:4
+    })
+
+    const boltInitialX = (Math.random()*1000) % (WIDTH - 100),
+        boltInitialY = 0;
+
+    var boltBody = createPhysicalBody({
+        coordinates: { x: boltInitialX, y: boltInitialY },
+        speed: { x: 0, y: 0 },
+        width: boltSprite.width,
+        height: boltImg.height
     });
 
 
@@ -106,6 +135,7 @@ function start() {
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
+        boltSprite.render(boltBody.coordinates, boltBody.coordinates).update();
 
         let allObstacles = obstacles.allObstacles;
         for (let i = 0; i < allObstacles.length; i++) {
@@ -116,8 +146,8 @@ function start() {
                     harryBody.exists = false;
                 }
                 else {
-                    currentScore++;
-                    console.log(currentScore);
+                    currentScore.increaseScore();
+                    currentScore.updateScore();
                     currentObstacle.exists = false;
                 }
             }
