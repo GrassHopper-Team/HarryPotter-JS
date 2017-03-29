@@ -33,7 +33,7 @@ body{
 #main h1 {
     display: block;
   font-family: 'HarryPotterCustomFont';  
-  font-size: 90px;
+  font-size: 100px;
   font-weight: lighter;
   color: #B0864B;
   margin-top: 100px;
@@ -43,7 +43,7 @@ body{
 
 h2 {
     font-family: 'HarryPotterCustomFont';  
-    font-size: 35px;
+    font-size: 40px;
   font-weight: lighter;
   color: #B0864B;
   margin-left: 180px;
@@ -54,7 +54,7 @@ h2 {
 .button {
   display: block;
   width: 175px;
-  margin: 20px 150px;
+  margin: 20px 200px;
   height: 50px;
   line-height: 30px;
   border: 1px solid #7f6000;
@@ -71,12 +71,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', end
   text-decoration: none;
   line-height: 50px;
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', endColorstr='#b0864b',GradientType=0 );
-  border-radius: 3px;
+  border-radius: 2px;
   text-align: center;
 }
 
 .top-scores {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "LumosCustomFont";
+    font-weight: bolder;
+    font-size: 25px;
     border-collapse: collapse;
     width: 500px;
 }
@@ -94,8 +96,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', end
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #f4c743;
-    color: #b0884f;
+    background-color: #C89D48;
+    color: #715438;
+    font-weight: bold;
 }
 
 .high-score .button {
@@ -141,28 +144,39 @@ input[type=text]{
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 1px;
     box-sizing: border-box;
+    font-size: 15px;
 }
 
 input[type=submit] {
     width: 100%;
-    background-color: #bf7d40;
-    color: white;
+    border: 1px solid #6b4e34;
+    background-color: #b0864b;
+    color: #634930;
+    font-family: 'LumosFontFamily';
+    font-size: 30px;
+    font-weight: bold;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: #bf7d40;
+    background-color: #7a5635;
+}
+
+label {
+    color: #634930;
+    font-family: 'LumosFontFamily';
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #form {
     width: 50%;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: 20px;
     background: #D1A647;
   background: -moz-linear-gradient(top, #D1A647 0%, #b0864b 100%);
