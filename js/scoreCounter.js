@@ -6,7 +6,6 @@ function scoreCounter() {
         var scoreHolder = document.createElement('DIV');
         scoreHolder.id = 'currentScore';
         scoreHolder.innerHTML = 'Score ' + currentScore;
-        scoreHolder.style.display = 'block';
         document.body.appendChild(scoreHolder);
     }
 
@@ -29,11 +28,18 @@ function scoreCounter() {
         return this;
     }
 
+    function removeDiv(){
+        var div = document.getElementById('currentScore');
+        var body = document.getElementById('body');
+        body.removeChild(div);
+    }
+
     return {
         increaseScore: increaseScore,
         createDiv: createCurrentScoreDiv,
         getScore: getScore,
         updateScore: updateScore,
-        resetScore: resetScore
+        resetScore: resetScore,
+        removeDiv: removeDiv
     }
 }
