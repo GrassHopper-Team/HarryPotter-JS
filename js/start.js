@@ -16,10 +16,10 @@ function start() {
         rowWalkRight = 2,
         rowWalkLeft = 3;
 
+    createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     let currentScore = scoreCounter();
     currentScore.createDiv();
 
-    createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
         playerImg = document.getElementById('harry-sprite'),
@@ -28,18 +28,7 @@ function start() {
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
 
-
-    // TODO: Add function to create array of elements
-
     var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, totalCoins, totalHoles);
-
-
-    var otherBody = createPhysicalBody({
-        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
-        speed: { x: 0, y: 0 },
-        width: 500,
-        height: 300
-    });
 
     var harrySprite = createSprite({
         sprite: playerImg,
@@ -62,23 +51,23 @@ function start() {
     });
 
     var holeBody = createPhysicalBody({
-        coordinates: { x: (Math.random()*1000) % (WIDTH - 100), y: (Math.random()*1000) % (HEIGHT - 100) },
+        coordinates: { x: (Math.random() * 1000) % (WIDTH - 100), y: (Math.random() * 1000) % (HEIGHT - 100) },
         speed: { x: 0, y: 0 },
         width: 50,
         height: 50
     });
 
     var boltSprite = createSprite({
-        sprite:boltImg,
+        sprite: boltImg,
         context: playerContext,
-        width: boltImg.width/4,
-        height: boltImg.height ,
+        width: boltImg.width / 4,
+        height: boltImg.height,
         rowNumber: 0,
-        numberOfFrames:80,
-        loopTicksPerFrame:4
+        numberOfFrames: 80,
+        loopTicksPerFrame: 4
     })
 
-    const boltInitialX = (Math.random()*1000) % (WIDTH - 100),
+    const boltInitialX = (Math.random() * 1000) % (WIDTH - 100),
         boltInitialY = 0;
 
     var boltBody = createPhysicalBody({
@@ -88,7 +77,7 @@ function start() {
         height: boltImg.height
     });
 
-
+    let map = {37: false, 38: false, 39: false, 40: false};
     window.addEventListener('keydown', function (event) {
         switch (event.keyCode) {
             case 37:
@@ -96,21 +85,25 @@ function start() {
                     return;
                 }
                 harryBody.speed.x = -harrySpeed;
+                harryBody.speed.y = 0;
                 harrySprite.rowNumber = rowWalkLeft;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 38:
                 harryBody.speed.y = -harrySpeed;
+                harryBody.speed.x = 0;
                 harrySprite.rowNumber = rowWalkUp;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 39:
                 harryBody.speed.x = harrySpeed;
+                harryBody.speed.y = 0;
                 harrySprite.rowNumber = rowWalkRight;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 40:
                 harryBody.speed.y = harrySpeed;
+                harryBody.speed.x = 0;
                 harrySprite.rowNumber = rowWalkDown;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
@@ -130,7 +123,6 @@ function start() {
     });
 
     function gameLoop() {
-
         obstacles.updateAll();
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
