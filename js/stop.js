@@ -7,6 +7,8 @@ function stop(score){
     obstacle.style.display = 'none';
     player.style.display = 'none';
     active = false;
-    currScore = score; 
+    currScore = score.getScore();
+    score.resetScore();
+    document.getElementById('currentScore').style.display = 'none';
     show(endScreen);
 }

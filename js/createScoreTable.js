@@ -1,5 +1,5 @@
 function createScoreTable(scores){
-    var len = scores.length;
+    var len = scores.scores.length;
     var table = document.querySelector('.top-scores tbody');
     debugger;
     for(var i = 0; i < len; i += 1){
@@ -7,8 +7,8 @@ function createScoreTable(scores){
         var tdName = document.createElement('td');
         var tdScore = document.createElement('td');
 
-        tdName.innerHTML = scores[i].name;
-        tdScore.innerHTML = scores[i].points;
+        tdName.innerHTML = scores.scores[i].name;
+        tdScore.innerHTML = scores.scores[i].points;
 
         tr.appendChild(tdName);
         tr.appendChild(tdScore);

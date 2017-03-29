@@ -23,6 +23,7 @@ function start() {
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
         playerImg = document.getElementById('harry-sprite');
+        playerCanvas.style.display = 'block';
 
 
     playerCanvas.width = WIDTH;
@@ -112,7 +113,7 @@ function start() {
     function gameLoop() {
 
         if (harryBody.exists === false) {
-            stop(currentScore.getScore());
+            stop(currentScore);
         }
 
         obstacles.updateAll();

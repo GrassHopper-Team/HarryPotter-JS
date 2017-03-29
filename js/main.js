@@ -32,12 +32,13 @@ function mainMenu() {
 
 playBtn.addEventListener('click', function () {
   hide(main);
+  active = true;
   start();
 });
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
-  createScoreTable(scores.scores);
+  createScoreTable(scores);
   show(highScore);
 });
 
