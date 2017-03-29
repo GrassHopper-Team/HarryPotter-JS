@@ -1,11 +1,16 @@
 function start() {
 
     'use strict';
-    const WIDTH = 800,
-        HEIGHT = 500,
-        loopsPerTick = 7,
+    const WIDTH = 900,
+        HEIGHT = 600,
+        BACKCANVASWIDTH = WIDTH + 65,
+        BACKCANVASHEIGHT = HEIGHT + 47,
+        loopsPerTick = 5,
+        harrySpeed = 3,
         harrySpritePerRow = 3,
         harrySpriteRows = 4,
+        totalCoins = 20,
+        totalHoles = 7,
         rowWalkUp = 0,
         rowWalkDown = 1,
         rowWalkRight = 2,
@@ -13,7 +18,7 @@ function start() {
 
     let currentScore = 0;
 
-    createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
+    createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
         playerImg = document.getElementById('harry-sprite');
@@ -24,7 +29,7 @@ function start() {
 
     // TODO: Add function to create array of elements
 
-    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, 3, 3);
+    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, totalCoins, totalHoles);
 
 
     var otherBody = createPhysicalBody({
@@ -44,8 +49,7 @@ function start() {
         loopTicksPerFrame: loopsPerTick
     });
 
-    const harrySpeed = 2,
-        harryInitialX = (WIDTH / 2) - (harrySprite.width / 2),
+    const harryInitialX = (WIDTH / 2) - (harrySprite.width / 2),
         harryInitialY = HEIGHT - harrySprite.height;
 
     var harryBody = createPhysicalBody({
@@ -96,8 +100,6 @@ function start() {
         harrySprite.numberOfFrames = 0;
     });
 
-    let allObstacles = obstacles.allObstacles;
-
     function gameLoop() {
 
         obstacles.updateAll();
@@ -105,7 +107,7 @@ function start() {
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
 
-
+        let allObstacles = obstacles.allObstacles;
         for (let i = 0; i < allObstacles.length; i++) {
 
             let currentObstacle = allObstacles[i];
@@ -115,8 +117,8 @@ function start() {
                 }
                 else {
                     currentScore++;
+                    console.log(currentScore);
                     currentObstacle.exists = false;
-                    
                 }
             }
         }

@@ -42,7 +42,7 @@ function createSprite(options) {
         return this;
     }
 
-    var sprite = {
+    let sprite = {
         sprite: options.sprite,
         context: options.context,
         width: options.width,

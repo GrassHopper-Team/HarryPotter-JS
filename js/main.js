@@ -2,18 +2,18 @@ window.addEventListener('load', function () {
   mainMenu();
 });
 
-var scores = createScore();
-var main = document.querySelector('#main');
-var highScore = document.getElementById('high-score');
-var topScore = document.getElementById('top-scores');
-var creditsInfo = document.querySelector('#creditsWrapper');
-var endScreen = document.querySelector('.end-screen');
+let scores = createScore();
+let main = document.querySelector('#main');
+let highScore = document.getElementById('high-score');
+let topScore = document.getElementById('top-scores');
+let creditsInfo = document.querySelector('#creditsWrapper');
+let endScreen = document.querySelector('.end-screen');
 
-var playBtn = document.querySelector('#playBtn');
-var scoreBtn = document.querySelector('#scoreBtn');
-var creditsBtn = document.querySelector('#creditsBtn');
-var backBtn = document.querySelector('.high-score .button');
-var submitBtn = document.querySelectorAll('.end-screen .submit-button')[0];
+let playBtn = document.querySelector('#playBtn');
+let scoreBtn = document.querySelector('#scoreBtn');
+let creditsBtn = document.querySelector('#creditsBtn');
+let backBtn = document.querySelector('.high-score .button');
+let submitBtn = document.querySelectorAll('.end-screen .submit-button')[0];
 
 function hide(element) {
   element.style.display = 'none';

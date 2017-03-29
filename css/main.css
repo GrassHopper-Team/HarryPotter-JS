@@ -11,7 +11,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body{
@@ -61,10 +61,10 @@ body{
     border: 1px solid #ddd;
     padding: 8px;
 }
- 
+
 .top-scores tr:nth-child(even){background-color: #f2f2f2;}
 
-.top-scores tr:nth-child(odd){background-color: white;}    
+.top-scores tr:nth-child(odd){background-color: white;}
 
 .top-scores th {
     padding-top: 12px;
@@ -109,7 +109,7 @@ body{
   overflow: auto;
   margin: 50px 0 0 50px;
   position: absolute;
-  top: 100px; 
+  top: 100px;
   left: 200px;
 }
 
@@ -161,12 +161,12 @@ canvas {
 
 #obstacle-canvas{
     z-index: 10;
-    margin: 70px 0 0 80px;
+    margin: 73px 0 0 82px;
 }
 
 #player-canvas {
     z-index: 100;
-    margin: 70px 0 0 80px;
+    margin: 73px 0 0 80px;
 }
 
 .sprite-image {
