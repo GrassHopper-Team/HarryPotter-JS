@@ -69,6 +69,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', end
   color: #715438;
   text-align: center;
   text-decoration: none;
+  line-height: 50px;
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', endColorstr='#b0864b',GradientType=0 );
   border-radius: 3px;
   text-align: center;
@@ -93,8 +94,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', end
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #ffff66;
-    color: #a3a375;
+    background-color: #f4c743;
+    color: #b0884f;
 }
 
 .high-score .button {
@@ -102,16 +103,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', end
   position: absolute;
   top: 80%;
   left: 60%;
-  width: 150px;
   margin: 10px auto;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid black;
-  color: #a3a375;
+  line-height: 50px;
   font-weight: bold;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background-color: #ffff66;
-  border-radius: 5px;
   text-align: center;
 }
 
@@ -164,9 +158,6 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #bf7d40;
-}
-#died {
-    color: white;
 }
 
 #form {
