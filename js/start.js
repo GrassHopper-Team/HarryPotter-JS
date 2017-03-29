@@ -1,9 +1,9 @@
-function start(){
-    
+function start() {
+
     'use strict';
     const WIDTH = 800,
         HEIGHT = 500,
-        loopsPerTick = 7,
+        loopsPerTick = 7, //7
         harrySpritePerRow = 3,
         harrySpriteRows = 4,
         rowWalkUp = 0,
@@ -40,6 +40,13 @@ function start(){
         speed: { x: 0, y: 0 },
         width: harrySprite.width,
         height: harrySprite.height
+    });
+
+    var otherBody = createPhysicalBody({
+        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
+        speed: { x: 0, y: 0 },
+        width: 500,
+        height: 300
     });
 
     window.addEventListener('keydown', function (event) {
@@ -87,6 +94,11 @@ function start(){
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH - harrySprite.width, y: HEIGHT - harrySprite.height });
 
+        
+        if (harryBody.collidesWith(otherBody) === true) {
+            alert('umre');
+            return;
+        };
 
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
 
