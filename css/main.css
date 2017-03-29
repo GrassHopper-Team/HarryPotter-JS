@@ -69,10 +69,6 @@ canvas {
     display: none;
 }
 
-.hidden{
-    display: none;
-}
-
 #creditsWrapper {
   position: absolute;
   top: 100%;

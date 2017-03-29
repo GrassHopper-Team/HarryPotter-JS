@@ -2,7 +2,12 @@ window.addEventListener('load', function () {
   mainMenu();
 });
 
-var main = document.getElementById('main');
+var main = document.querySelector('#main');
+var creditsInfo = document.querySelector('#creditsWrapper');
+
+var playBtn = document.querySelector('#playBtn');
+var scoreBtn = document.querySelector('#scoreBtn');
+var creditsBtn = document.querySelector('#creditsBtn');
 
 function hide(element) {
   element.style.display = 'none';
@@ -13,23 +18,24 @@ function show(element) {
 };
 
 function mainMenu() {
+  hide(creditsInfo)
   show(main);
 };
 
-document.querySelectorAll('.play')[0].addEventListener('click', function () {
+playBtn.addEventListener('click', function () {
   hide(main);
   start();
 });
 
-document.querySelectorAll('.credits')[0].addEventListener('click', function () {
+creditsBtn.addEventListener('click', function () {
   hide(main);
-  document.querySelector('#creditsWrapper').classList = "";
+  show(creditsInfo);
 })
 
 window.onkeydown = function (event) {
   // Pressing ESC should hide credits/score and show the menu
   if (event.keyCode == 27) {
-    document.querySelector('#creditsWrapper').classList += ' hidden';
+    hide(creditsInfo);
     show(main);
   }
 }
