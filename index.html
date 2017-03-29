@@ -18,6 +18,15 @@
       </ul>
     </div>
   </div>
+  <div id="high-score" class="high-score">
+    <table id="top-scores" class="top-scores">
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </table>
+    <a href="#" id="button" class="button">Back</a>
+  </div>
   <div id="creditsWrapper" class="hidden">
     <div class='team'>Team GrassHopper</div>
     <div class='game'>Harry Potter</div>
@@ -28,6 +37,16 @@
     <div class='name'>Aleksandar Ikonomov</div>
     <div class='name'>Mihael Ivanova</div>
     <div class='name'>Plamen Lakov</div>
+  </div>
+  <div id="end-screen" class="end-screen">
+    <h1>You Died!</h1>
+    <div id="form">
+      <form action="#">
+        <label for="name">Enter your name</label>
+        <input type="text" id="name" name="nickname" placeholder="Your name..">
+        <input class="submit-button" type="submit" value="Submit">
+      </form>
+    </div>
   </div>
 
   <canvas id="background-canvas"></canvas>
