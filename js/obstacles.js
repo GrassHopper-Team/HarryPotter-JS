@@ -38,6 +38,7 @@ function createObstacles(canvasDimensions, numberOfCoins, numberOfHoles) {
         boltWidth = boltImg.width / 4,
         loopsPerTick = 100000;
     let loopsCount = 0;
+    obstacleCanvas.style.display = 'block';
 
 
 

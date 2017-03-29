@@ -1,4 +1,4 @@
-function createScore() {
+function createScore(obj) {
 
     var scores = [];
 

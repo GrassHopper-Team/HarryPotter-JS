@@ -15,7 +15,7 @@ function scoreCounter() {
     }
 
     function getScore(){
-        return this.currentScore;
+        return currentScore;
     }
 
     function updateScore(){

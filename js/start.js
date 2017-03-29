@@ -111,6 +111,10 @@ function start() {
 
     function gameLoop() {
 
+        if (harryBody.exists === false) {
+            stop(currentScore.getScore());
+        }
+
         obstacles.updateAll();
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
@@ -132,7 +136,9 @@ function start() {
             }
         }
 
-        window.requestAnimationFrame(gameLoop);
+        if (active) {
+            window.requestAnimationFrame(gameLoop);
+        }
     }
 
     gameLoop();
