@@ -1,5 +1,4 @@
 function start() {
-
     'use strict';
     const WIDTH = 900,
         HEIGHT = 600,
@@ -16,31 +15,17 @@ function start() {
         rowWalkRight = 2,
         rowWalkLeft = 3;
 
+    createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     let currentScore = scoreCounter();
     currentScore.createDiv();
 
-    createBackground({ width: BACKCANVASWIDTH, height: BACKCANVASHEIGHT });
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
         playerImg = document.getElementById('harry-sprite');
-        playerCanvas.style.display = 'block';
-
+    playerCanvas.style.display = 'block';
 
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
-
-
-    // TODO: Add function to create array of elements
-
-    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, totalCoins, totalHoles);
-
-
-    var otherBody = createPhysicalBody({
-        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
-        speed: { x: 0, y: 0 },
-        width: 500,
-        height: 300
-    });
 
     var harrySprite = createSprite({
         sprite: playerImg,
@@ -62,13 +47,7 @@ function start() {
         height: harrySprite.height
     });
 
-    var holeBody = createPhysicalBody({
-        coordinates: { x: (Math.random() * 1000) % (WIDTH - 100), y: (Math.random() * 1000) % (HEIGHT - 100) },
-        speed: { x: 0, y: 0 },
-        width: 50,
-        height: 50
-    });
-
+    var obstacles = createObstacles({ canvasDimensions: { x: WIDTH, y: HEIGHT }, numberOfCoins: totalCoins, numberOfHoles: totalHoles, harry: harryBody });
 
     window.addEventListener('keydown', function (event) {
         switch (event.keyCode) {
@@ -77,21 +56,25 @@ function start() {
                     return;
                 }
                 harryBody.speed.x = -harrySpeed;
+                harryBody.speed.y = 0;
                 harrySprite.rowNumber = rowWalkLeft;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 38:
                 harryBody.speed.y = -harrySpeed;
+                harryBody.speed.x = 0;
                 harrySprite.rowNumber = rowWalkUp;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 39:
                 harryBody.speed.x = harrySpeed;
+                harryBody.speed.y = 0;
                 harrySprite.rowNumber = rowWalkRight;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
             case 40:
                 harryBody.speed.y = harrySpeed;
+                harryBody.speed.x = 0;
                 harrySprite.rowNumber = rowWalkDown;
                 harrySprite.numberOfFrames = harrySpritePerRow;
                 break;
@@ -115,7 +98,6 @@ function start() {
         if (harryBody.exists === false) {
             stop(currentScore);
         }
-
         obstacles.updateAll();
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });

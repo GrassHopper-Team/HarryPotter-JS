@@ -62,6 +62,7 @@ submitBtn.addEventListener('click', function(){
 window.onkeydown = function (event) {
   // Pressing ESC should hide credits/score and show the menu
   if (event.keyCode == 27) {
+    hide(highScore);
     hide(creditsInfo);
     show(main);
   }
