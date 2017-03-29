@@ -44,6 +44,13 @@ function start() {
     });
 
     /// TODO: Add function to create array of elements
+    var otherBody = createPhysicalBody({
+        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
+        speed: { x: 0, y: 0 },
+        width: 500,
+        height: 300
+    });
+
     var coinSprite = createSprite({
         sprite: coinImg,
         context: playerContext,
@@ -121,6 +128,12 @@ function start() {
     function gameLoop() {
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH - harrySprite.width, y: HEIGHT - harrySprite.height });
+
+
+        if (harryBody.collidesWith(otherBody) === true) {
+            alert('umre');
+            return;
+        };
 
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
         coinSprite.render(coinBody.coordinates, coinBody.coordinates).update();
