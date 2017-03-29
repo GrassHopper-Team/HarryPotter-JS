@@ -1,6 +1,6 @@
 function createScoreTable(scores){
     var len = scores.scores.length;
-    var table = document.querySelector('.top-scores');
+    var table = document.querySelector('.top-scores tbody');
     var trHeader = document.createElement('tr');
     var thName = document.createElement('th');
     thName.innerHTML = 'Name';
