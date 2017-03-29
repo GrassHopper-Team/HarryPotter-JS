@@ -38,7 +38,6 @@ playBtn.addEventListener('click', function () {
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
-  debugger;
   createScoreTable(scores);
   show(highScore);
 });
