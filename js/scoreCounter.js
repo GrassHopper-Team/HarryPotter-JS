@@ -1,30 +1,31 @@
 function scoreCounter() {
     const scoreIncreasement = 5;
-    var currentScore = 0;
+    const scoreHolder = document.createElement('DIV');
+    let currentScore = 0;
+    
+    scoreHolder.id = 'currentScore';
+    scoreHolder.innerHTML = 'Score ' + currentScore;
+    scoreHolder.style.display = 'block';
+
 
     function createCurrentScoreDiv() {
-        var scoreHolder = document.createElement('DIV');
-        scoreHolder.id = 'currentScore';
-        scoreHolder.innerHTML = 'Score ' + currentScore;
-        scoreHolder.style.display = 'block';
         document.body.appendChild(scoreHolder);
     }
 
     function increaseScore() {
-        currentScore += scoreIncreasement
-        return currentScore ;
-    }
-
-    function getScore(){
+        currentScore += scoreIncreasement;
         return currentScore;
     }
 
-    function updateScore(){
-        var div = document.getElementById('currentScore');
-        div.innerHTML = 'Score ' + currentScore;
+    function getScore() {
+        return currentScore;
     }
 
-    function resetScore(){
+    function updateScore() {
+        scoreHolder.innerHTML = 'Score ' + currentScore;
+    }
+
+    function resetScore() {
         currentScore = 0;
         return this;
     }

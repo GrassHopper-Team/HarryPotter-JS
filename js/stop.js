@@ -1,14 +1,13 @@
-function stop(score){
-    var background = document.getElementById('background-canvas');
-    var obstacle = document.getElementById('obstacle-canvas');
-    var player = document.getElementById('player-canvas');
+function stop(score) {
+    const gameCanvas = document.querySelector('#gameWrapper');
+    const currentScore = document.querySelector('#currentScore');
 
-    background.style.display = 'none';
-    obstacle.style.display = 'none';
-    player.style.display = 'none';
+    hide(gameCanvas);
+    hide(currentScore);
+
     active = false;
     currScore = score.getScore();
     score.resetScore();
-    document.getElementById('currentScore').style.display = 'none';
+    
     show(endScreen);
 }

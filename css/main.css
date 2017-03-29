@@ -21,7 +21,7 @@ body{
     background-size: cover;
 }
 
-#main {
+#mainMenu {
   display: none;
   height: 60%;
   overflow: auto;
@@ -30,7 +30,7 @@ body{
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
-#main h1 {
+#mainMenu h1 {
   color: yellow;
   margin: 100px;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -51,22 +51,22 @@ body{
   text-align: center;
 }
 
-.top-scores {
+#score-table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 500px;
 }
 
-.top-scores td, .top-scores th {
+#high-score td, #high-scores th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-.top-scores tr:nth-child(even){background-color: #f2f2f2;}
+#high-score tr:nth-child(even){background-color: #f2f2f2;}
 
-.top-scores tr:nth-child(odd){background-color: white;}
+#high-score tr:nth-child(odd){background-color: white;}
 
-.top-scores th {
+#high-score th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -74,7 +74,7 @@ body{
     color: #a3a375;
 }
 
-.high-score .button {
+#high-score .button {
   display: block;
   position: absolute;
   top: 80%;
@@ -173,6 +173,7 @@ canvas {
 
 #player-canvas {
     z-index: 100;
+    display: block;
 }
 
 .sprite-image {

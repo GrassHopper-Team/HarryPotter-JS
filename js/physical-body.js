@@ -34,6 +34,7 @@ function createPhysicalBody(options) {
     let physicalBody = {
         coordinates: options.coordinates,
         speed: options.speed || { x: 0, y: 0 },
+        bolt: options.bolt || false,
         exists: true,
         harmful: options.harmful || false,
         height: options.height,

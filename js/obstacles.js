@@ -50,12 +50,13 @@ function createObstacles(options) {
         loopTicksPerFrame: boltloopsPerFrame
     });
 
-    const boltInitialX = getRandomPositionInCanvas(boltSprite.width, boltSprite.height).x,
+    const boltInitialX = getRandomPositionInCanvas(boltSprite.width, boltSprite.height, canvasDimensions).x,
         boltInitialY = 0;
 
     var boltBody = createPhysicalBody({
         coordinates: { x: boltInitialX, y: boltInitialY },
         speed: { x: 0, y: 0 },
+        bolt: true,
         harmful: true,
         width: boltSprite.width,
         height: boltImg.height
@@ -77,7 +78,7 @@ function createObstacles(options) {
                 loopTicksPerFrame: holeLoopsPerFrame
             });
 
-            let position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height);
+            let position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height, canvasDimensions);
 
             let holeBody = createPhysicalBody({
                 coordinates: { x: position.x, y: position.y },
@@ -88,7 +89,7 @@ function createObstacles(options) {
             });
 
             while (checkIfObstacleAlreadyThere(holeBody)) {
-                position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height)
+                position = getRandomPositionInCanvas(holeSprite.width, holeSprite.height, canvasDimensions)
                 holeBody.coordinates.x = position.x;
                 holeBody.coordinates.y = position.y;
             }
@@ -110,7 +111,7 @@ function createObstacles(options) {
                 loopTicksPerFrame: coinLoopPerFrame
             });
 
-            let position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height);
+            let position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height, canvasDimensions);
 
             let coinBody = createPhysicalBody({
                 coordinates: { x: position.x, y: position.y },
@@ -121,7 +122,7 @@ function createObstacles(options) {
             });
 
             while (checkIfObstacleAlreadyThere(coinBody)) {
-                position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height)
+                position = getRandomPositionInCanvas(coinSprite.width, coinSprite.height, canvasDimensions);
                 coinBody.coordinates.x = position.x;
                 coinBody.coordinates.y = position.y;
             }
@@ -145,12 +146,12 @@ function createObstacles(options) {
                 lastCoinCoordinates = { x: currentCoinBody.coordinates.x, y: currentCoinBody.coordinates.y };
                 currentCoinBody.exists = true;
 
-                let position = getRandomPositionInCanvas(coinWidth, coinHeight);
+                let position = getRandomPositionInCanvas(coinWidth, coinHeight, canvasDimensions);
                 currentCoinBody.coordinates.x = position.x;
                 currentCoinBody.coordinates.y = position.y;
 
                 while (checkIfObstacleAlreadyThere(currentCoinBody)) {
-                    position = getRandomPositionInCanvas(coinWidth, coinHeight);
+                    position = getRandomPositionInCanvas(coinWidth, coinHeight, canvasDimensions);
                     currentCoinBody.coordinates.x = position.x;
                     currentCoinBody.coordinates.y = position.y;
                 }
@@ -201,28 +202,6 @@ function createObstacles(options) {
         }
 
         return false;
-    }
-
-    function getRandomInRange(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    function getRandomPositionInCanvas(width, height) {
-        let x = getRandomInRange(0, canvasDimensions.x) - width;
-        let y = getRandomInRange(0, canvasDimensions.y) - height;
-
-        if (x < 0) {
-            x = 0;
-        }
-
-        if (y < 0) {
-            y = 0;
-        }
-
-        return {
-            x: x,
-            y: y
-        }
     }
 
     // TODO: Create deep copy of the objects
