@@ -12,7 +12,6 @@ function start() {
         rowWalkLeft = 3;
 
     createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
-
     const playerCanvas = document.getElementById('player-canvas'),
         playerContext = playerCanvas.getContext('2d'),
         playerImg = document.getElementById('harry-sprite'),
@@ -44,6 +43,7 @@ function start() {
         height: harrySprite.height
     });
 
+    /// TODO: Add function to create array of elements
     var coinSprite = createSprite({
         sprite: coinImg,
         context: playerContext,
@@ -79,7 +79,6 @@ function start() {
     });
 
     window.addEventListener('keydown', function (event) {
-
         switch (event.keyCode) {
             case 37:
                 if (harryBody.speed.x < 0) {
@@ -122,7 +121,6 @@ function start() {
     function gameLoop() {
 
         var lastHarryCoordinates = harryBody.move({ x: WIDTH - harrySprite.width, y: HEIGHT - harrySprite.height });
-
 
         harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
         coinSprite.render(coinBody.coordinates, coinBody.coordinates).update();

@@ -1,7 +1,6 @@
 function createSprite(options) {
 
     'use strict';
-
     function render(clearCoordinates, drawCoordinates) {
 
         this.context.clearRect(

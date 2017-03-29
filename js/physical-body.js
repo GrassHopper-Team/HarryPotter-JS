@@ -1,7 +1,6 @@
 function createPhysicalBody(options) {
 
     'use strict';
-
     function move(maxCoordinates) {
         var lastCoordinates = { x: this.coordinates.x, y: this.coordinates.y };
 
