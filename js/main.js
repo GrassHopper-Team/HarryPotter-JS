@@ -38,6 +38,7 @@ playBtn.addEventListener('click', function () {
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
+  debugger;
   createScoreTable(scores);
   show(highScore);
 });
@@ -55,7 +56,6 @@ creditsBtn.addEventListener('click', function () {
 submitBtn.addEventListener('click', function(){
   var input = document.getElementById("name").value;
   scores.update({name: input, points: currScore});
-  debugger;
   hide(endScreen);
   show(main);
 });
