@@ -11,7 +11,8 @@ function start() {
         rowWalkRight = 2,
         rowWalkLeft = 3;
 
-    let currentScore = 0;
+    let currentScore = scoreCounter();
+    currentScore.createDiv();
 
     createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
     const playerCanvas = document.getElementById('player-canvas'),
@@ -143,9 +144,9 @@ function start() {
                     harryBody.exists = false;
                 }
                 else {
-                    currentScore++;
+                    currentScore.increaseScore();
+                    currentScore.updateScore();
                     currentObstacle.exists = false;
-                    
                 }
             }
         }

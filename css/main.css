@@ -211,3 +211,19 @@ canvas {
     top: -500%;
   }
 }
+
+#currentScore {
+    width: 250px;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Courier New, Courier, monospace;
+    background-color: #bf7d40;
+    color: antiquewhite;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    z-index: 999;
+    display: block;
+    padding: 10px 0px;
+}
