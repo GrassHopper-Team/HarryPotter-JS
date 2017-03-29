@@ -1,114 +1,128 @@
 function start() {
 
-   'use strict';
-   const WIDTH = 800,
-       HEIGHT = 500,
-       loopsPerTick = 7,
-       harrySpritePerRow = 3,
-       harrySpriteRows = 4,
-       rowWalkUp = 0,
-       rowWalkDown = 1,
-       rowWalkRight = 2,
-       rowWalkLeft = 3;
+    'use strict';
+    const WIDTH = 800,
+        HEIGHT = 500,
+        loopsPerTick = 7,
+        harrySpritePerRow = 3,
+        harrySpriteRows = 4,
+        rowWalkUp = 0,
+        rowWalkDown = 1,
+        rowWalkRight = 2,
+        rowWalkLeft = 3;
 
-   createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
-   const playerCanvas = document.getElementById('player-canvas'),
-       playerContext = playerCanvas.getContext('2d'),
-       playerImg = document.getElementById('harry-sprite');
+    let currentScore = 0;
 
-   playerCanvas.width = WIDTH;
-   playerCanvas.height = HEIGHT;
+    createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
+    const playerCanvas = document.getElementById('player-canvas'),
+        playerContext = playerCanvas.getContext('2d'),
+        playerImg = document.getElementById('harry-sprite');
 
-
-   // TODO: Add function to create array of elements
-
-   var obstacles = createObstacles({ x: WIDTH, y: HEIGHT}, 3, 3);
+    playerCanvas.width = WIDTH;
+    playerCanvas.height = HEIGHT;
 
 
-   var otherBody = createPhysicalBody({
-       coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
-       speed: { x: 0, y: 0 },
-       width: 500,
-       height: 300
-   });
+    // TODO: Add function to create array of elements
 
-   var harrySprite = createSprite({
-       sprite: playerImg,
-       context: playerContext,
-       width: playerImg.width / harrySpritePerRow,
-       height: playerImg.height / harrySpriteRows,
-       rowNumber: 0,
-       numberOfFrames: 0,
-       loopTicksPerFrame: loopsPerTick
-   });
-
-   const harrySpeed = 2,
-       harryInitialX = (WIDTH / 2) - (harrySprite.width / 2),
-       harryInitialY = HEIGHT - harrySprite.height;
-
-   var harryBody = createPhysicalBody({
-       coordinates: { x: harryInitialX, y: harryInitialY },
-       speed: { x: 0, y: 0 },
-       width: harrySprite.width,
-       height: harrySprite.height
-   });
+    var obstacles = createObstacles({ x: WIDTH, y: HEIGHT }, 3, 3);
 
 
-   window.addEventListener('keydown', function (event) {
-       switch (event.keyCode) {
-           case 37:
-               if (harryBody.speed.x < 0) {
-                   return;
-               }
-               harryBody.speed.x = -harrySpeed;
-               harrySprite.rowNumber = rowWalkLeft;
-               harrySprite.numberOfFrames = harrySpritePerRow;
-               break;
-           case 38:
-               harryBody.speed.y = -harrySpeed;
-               harrySprite.rowNumber = rowWalkUp;
-               harrySprite.numberOfFrames = harrySpritePerRow;
-               break;
-           case 39:
-               harryBody.speed.x = harrySpeed;
-               harrySprite.rowNumber = rowWalkRight;
-               harrySprite.numberOfFrames = harrySpritePerRow;
-               break;
-           case 40:
-               harryBody.speed.y = harrySpeed;
-               harrySprite.rowNumber = rowWalkDown;
-               harrySprite.numberOfFrames = harrySpritePerRow;
-               break;
-           default:
-               break;
-       }
-   });
+    var otherBody = createPhysicalBody({
+        coordinates: { x: WIDTH / 2, y: HEIGHT / 2 },
+        speed: { x: 0, y: 0 },
+        width: 500,
+        height: 300
+    });
 
-   window.addEventListener('keyup', function (event) {
-       if ((event.keyCode < 37) && (event.keyCode > 40)) {
-           return;
-       }
+    var harrySprite = createSprite({
+        sprite: playerImg,
+        context: playerContext,
+        width: playerImg.width / harrySpritePerRow,
+        height: playerImg.height / harrySpriteRows,
+        rowNumber: 0,
+        numberOfFrames: 0,
+        loopTicksPerFrame: loopsPerTick
+    });
 
-       harryBody.speed.x = 0;
-       harryBody.speed.y = 0;
-       harrySprite.numberOfFrames = 0;
-   });
+    const harrySpeed = 2,
+        harryInitialX = (WIDTH / 2) - (harrySprite.width / 2),
+        harryInitialY = HEIGHT - harrySprite.height;
 
-   function gameLoop() {
-
-       obstacles.updateAll();
-
-       var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT});
-       harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
+    var harryBody = createPhysicalBody({
+        coordinates: { x: harryInitialX, y: harryInitialY },
+        speed: { x: 0, y: 0 },
+        width: harrySprite.width,
+        height: harrySprite.height
+    });
 
 
-       // if (harryBody.collidesWith(otherBody) === true) {
-       //     alert('umre');
-       //     return;
-       // };
+    window.addEventListener('keydown', function (event) {
+        switch (event.keyCode) {
+            case 37:
+                if (harryBody.speed.x < 0) {
+                    return;
+                }
+                harryBody.speed.x = -harrySpeed;
+                harrySprite.rowNumber = rowWalkLeft;
+                harrySprite.numberOfFrames = harrySpritePerRow;
+                break;
+            case 38:
+                harryBody.speed.y = -harrySpeed;
+                harrySprite.rowNumber = rowWalkUp;
+                harrySprite.numberOfFrames = harrySpritePerRow;
+                break;
+            case 39:
+                harryBody.speed.x = harrySpeed;
+                harrySprite.rowNumber = rowWalkRight;
+                harrySprite.numberOfFrames = harrySpritePerRow;
+                break;
+            case 40:
+                harryBody.speed.y = harrySpeed;
+                harrySprite.rowNumber = rowWalkDown;
+                harrySprite.numberOfFrames = harrySpritePerRow;
+                break;
+            default:
+                break;
+        }
+    });
 
-       window.requestAnimationFrame(gameLoop);
-   }
+    window.addEventListener('keyup', function (event) {
+        if ((event.keyCode < 37) && (event.keyCode > 40)) {
+            return;
+        }
 
-   gameLoop();
+        harryBody.speed.x = 0;
+        harryBody.speed.y = 0;
+        harrySprite.numberOfFrames = 0;
+    });
+
+    let allObstacles = obstacles.allObstacles;
+
+    function gameLoop() {
+
+        obstacles.updateAll();
+
+        var lastHarryCoordinates = harryBody.move({ x: WIDTH, y: HEIGHT });
+        harrySprite.render(lastHarryCoordinates, harryBody.coordinates).update();
+
+
+        for (let i = 0; i < allObstacles.length; i++) {
+
+            let currentObstacle = allObstacles[i];
+            if (harryBody.collidesWith(currentObstacle)) {
+                if (currentObstacle.harmful) {
+                    harryBody.exists = false;
+                }
+                else {
+                    currentScore++;
+                    currentObstacle.exists = false;
+                    
+                }
+            }
+        }
+
+        window.requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
 }
