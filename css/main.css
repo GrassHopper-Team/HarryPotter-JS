@@ -149,7 +149,7 @@ input[type=text]{
     font-size: 15px;
 }
 
-input[type=submit] {
+input[type=button] {
     width: 100%;
     border: 1px solid #6b4e34;
     background-color: #b0864b;
