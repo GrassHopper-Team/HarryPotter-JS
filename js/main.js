@@ -2,6 +2,7 @@ window.addEventListener('load', function () {
   mainMenu();
 });
 
+var scores = createScore();
 var main = document.querySelector('#main');
 var highScore = document.getElementById('high-score');
 var topScore = document.getElementById('top-scores');
@@ -34,7 +35,7 @@ playBtn.addEventListener('click', function () {
 
 scoreBtn.addEventListener('click', function () {
   hide(main);
-  //Not finished working on it! (sorting top scores)
+  createScoreTable(scores.scores);
   show(highScore);
 });
 
