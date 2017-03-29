@@ -12,4 +12,6 @@ function createBackground(dimensions) {
     context.fillStyle = pattern;
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.drawImage(frameIMG, 0, 0, canvas.width, canvas.height);
+
+    
 }

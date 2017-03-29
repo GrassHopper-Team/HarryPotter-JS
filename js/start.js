@@ -11,6 +11,8 @@ function start() {
         rowWalkRight = 2,
         rowWalkLeft = 3;
 
+
+
     createBackground({ width: WIDTH + 60, height: HEIGHT + 40 });
 
     const playerCanvas = document.getElementById('player-canvas'),
@@ -22,6 +24,8 @@ function start() {
 
     playerCanvas.width = WIDTH;
     playerCanvas.height = HEIGHT;
+
+
 
     var harrySprite = createSprite({
         sprite: playerImg,
