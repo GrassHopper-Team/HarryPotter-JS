@@ -1,8 +1,7 @@
 # Harry Potter-San
   
-<img src="https://s-media-cache-ak0.pinimg.com/564x/32/6b/12/326b129b23d6e4427281a8a8d10e35db.jpg" width="300px" align="right">
 JavaScript UI and DOM | Team 'Grasshopper' |  Client-side JavaScript Game using HTML5 canvas
-
+<img src="https://s-media-cache-ak0.pinimg.com/564x/32/6b/12/326b129b23d6e4427281a8a8d10e35db.jpg" width="300px" align="right">
 ### Harry Potter-San And the Arrigato of the Yakuza
 This game was created as part of the teamwork assignment for the course JavaScript UI and DOM  (March 2017) at Telerik Academy by Team 'Grasshopper'. The game uses native DOM manipulations to create, show and hide its menu, score table and canvas. The field was visualized using [HTML5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
 
