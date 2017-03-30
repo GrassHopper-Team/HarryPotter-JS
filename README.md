@@ -1,10 +1,10 @@
-#Harry Potter-San
+# Harry Potter-San
   
 <img src="https://s-media-cache-ak0.pinimg.com/564x/32/6b/12/326b129b23d6e4427281a8a8d10e35db.jpg" width="300px" align="right">
 JavaScript UI and DOM | Team 'Grasshopper' |  Client-side JavaScript Game using HTML5 canvas
 
 ### Harry Potter-San And the Arrigato of the Yakuza
-This game was created as part of the teamwork assignment for the course JavaScript UI and DOM  (March 2017) at Telerik Academy by Team 'Grasshopper'. The game uses native DOM manipulations to create, show and hide its menu, score table and canvas. The field was visualized using [HTML5] (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
+This game was created as part of the teamwork assignment for the course JavaScript UI and DOM  (March 2017) at Telerik Academy by Team 'Grasshopper'. The game uses native DOM manipulations to create, show and hide its menu, score table and canvas. The field was visualized using [HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
 
 The game tells the story of Harry Potter. Harry was still madly in love in Hermione and decided to try a new potion to make him more attractive. However, during the mixing process something went terribly wrong. Now Harry looks a bit Asian and is in the basement of Hogwarts. The only way out is to collect enough coins and use them to escape. There are some obstacles getting in his way. 
 
@@ -34,9 +34,7 @@ Following a team meeting and carefull consideration of our ideas, all team membe
 ### Screenshots		   
 <img align="center" src="imgs/screenshots/Menu.JPG">
 <img align="center" src="imgs/screenshots/Field.JPG"> 
-<img align="center" src="imgs/screenshots/NameScore.JPG">  
-<img align="center" src="imgs/screenshots/Credits.JPG"> 
+<img align="center" src="imgs/screenshots/NameScore.JPG" width="200px" align="right"><img align="center" src="imgs/screenshots/Credits.JPG" width="200px" align="right"> 
  
 ### URL to repository
-[**Link to YouTube video**]
-(https://www.youtube.com/watch?v=8CXwSBUuxxY&feature=youtu.be)
+[**Link to YouTube video**](https://www.youtube.com/watch?v=8CXwSBUuxxY&feature=youtu.be)
