@@ -1,6 +1,6 @@
 #Harry Potter-San
   
-<img src="https://s-media-cache-ak0.pinimg.com/564x/32/6b/12/326b129b23d6e4427281a8a8d10e35db.jpg" width="150px" align="right">
+<img src="https://s-media-cache-ak0.pinimg.com/564x/32/6b/12/326b129b23d6e4427281a8a8d10e35db.jpg" width="300px" align="right">
 JavaScript UI and DOM | Team 'Grasshopper' |  Client-side JavaScript Game using HTML5 canvas
 
 ### Harry Potter-San And the Arrigato of the Yakuza
