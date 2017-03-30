@@ -4,9 +4,9 @@
 JavaScript UI and DOM | Team 'Grasshopper' |  Client-side JavaScript Game using HTML5 canvas
 
 ### Harry Potter-San And the Arrigato of the Yakuza
-This game was created as part of the teamwork assignment for the course JavaScript UI and DOM  (March 2017) at Telerik Academy by Team 'Grasshopper'. The game uses native DOM manipulations to create, show and hide its menu, score table and canvas. The field was visualized using [HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
+This game was created as part of the teamwork assignment for the course JavaScript UI and DOM  (March 2017) at Telerik Academy by Team 'Grasshopper'. The game uses native DOM manipulations to create, show and hide its menu, score table and canvas. The field was visualized using [HTML5 canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
 
-The game tells the story of Harry Potter. Harry was still madly in love in Hermione and decided to try a new potion to make him more attractive. However, during the mixing process something went terribly wrong. Now Harry looks a bit Asian and is in the basement of Hogwarts. The only way out is to collect enough coins and use them to escape. There are some obstacles getting in his way. 
+The game tells the story of Harry Potter. Harry was still madly in love in Hermione and decided to try a new potion to make him more attractive. However, during the mixing process something went terribly wrong. Now Harry looks a bit Asian and is in the basement of Hogwarts. The only way out is to collect enough coins and use them to buy a the new Nimbus 2017 broom and fly away. There are some obstacles getting in his way. 
 
 The game is to be further developed by adding features like:
 * Bolts should appear from every side
