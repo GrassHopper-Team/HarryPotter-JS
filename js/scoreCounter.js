@@ -6,10 +6,10 @@ function scoreCounter() {
     scoreHolder.id = 'currentScore';
     scoreHolder.innerHTML = 'Score ' + currentScore;
     scoreHolder.style.display = 'block';
-
+    document.body.appendChild(scoreHolder);
 
     function createCurrentScoreDiv() {
-        document.body.appendChild(scoreHolder);
+        show(scoreHolder);
     }
 
     function increaseScore() {
@@ -30,11 +30,16 @@ function scoreCounter() {
         return this;
     }
 
+    function removeDiv(){
+        hide(scoreHolder);
+    }
+
     return {
         increaseScore: increaseScore,
         createDiv: createCurrentScoreDiv,
         getScore: getScore,
         updateScore: updateScore,
-        resetScore: resetScore
+        resetScore: resetScore,
+        removeDiv: removeDiv
     }
 }

@@ -5,6 +5,7 @@ function createObstacles(options) {
         obstacleContext = obstacleCanvas.getContext('2d'),
         boltCanvas = document.querySelector('#bolt-canvas'),
         boltContext = boltCanvas.getContext('2d');
+        boltCanvas.style.display = 'block';
 
     var canvasDimensions = options.canvasDimensions;
     var numberOfCoins = options.numberOfCoins || 5;

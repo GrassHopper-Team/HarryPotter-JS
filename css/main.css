@@ -23,7 +23,7 @@ body{
 
 #mainMenu {
   display: none;
-  height: 60%;
+  height: 70%;
   overflow: auto;
   margin: 50px 0 0 50px;
   position: absolute;
@@ -31,47 +31,74 @@ body{
 }
 
 #mainMenu h1 {
-  color: yellow;
-  margin: 100px;
+  display: block;
+  font-family: 'HarryPotterCustomFont';  
+  font-size: 100px;
+  font-weight: lighter;
+  color: #B0864B;
+  margin-top: 100px;
+  margin-left: 50px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h2 {
+  font-family: 'HarryPotterCustomFont';  
+  font-size: 40px;
+  font-weight: lighter;
+  color: #B0864B;
+  margin-left: 180px;
+  margin-bottom: 40px;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .button {
   display: block;
-  width: 150px;
-  margin: 10px 150px;
-  height: 30px;
+  width: 250px;
+  margin: 20px 200px;
   line-height: 30px;
-  border: 1px solid black;
-  color: #a3a375;
+  border: 1px solid #7f6000;
+  background: #f4c743;
+  background: -moz-linear-gradient(top, #f4c743 0%, #b0864b 100%);
+  background: -webkit-linear-gradient(top, #f4c743 0%,#b0864b 100%);
+  background: linear-gradient(to bottom, #f4c743 0%,#b0864b 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', endColorstr='#b0864b',GradientType=0 );
+  font-family: 'Lumos';
   font-weight: bold;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background-color: #ffff66;
-  border-radius: 5px;
+  font-size: 34px;
+  color: #715438;
   text-align: center;
+  text-decoration: none;
+  line-height: 50px;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4c743', endColorstr='#b0864b',GradientType=0 );
+  border-radius: 2px;
+  text-align: center;
+   padding: 2px;
 }
 
 #score-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "LumosCustomFont";
+    font-weight: bolder;
+    font-size: 25px;
     border-collapse: collapse;
     width: 500px;
 }
 
-#high-score td, #high-scores th {
+#score-table td, #score-table th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#high-score tr:nth-child(even){background-color: #f2f2f2;}
+#score-table tr:nth-child(even){background-color: #f2f2f2;}
 
-#high-score tr:nth-child(odd){background-color: white;}
+#score-table tr:nth-child(odd){background-color: white;}
 
-#high-score th {
+#score-table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #ffff66;
-    color: #a3a375;
+    background-color: #C89D48;
+    color: #715438;
+    font-weight: bold;
 }
 
 #high-score .button {
@@ -79,16 +106,9 @@ body{
   position: absolute;
   top: 80%;
   left: 60%;
-  width: 150px;
   margin: 10px auto;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid black;
-  color: #a3a375;
+  line-height: 50px;
   font-weight: bold;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  background-color: #ffff66;
-  border-radius: 5px;
   text-align: center;
 }
 
@@ -101,6 +121,7 @@ body{
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
+
 
 #end-screen {
   display: none;
@@ -115,7 +136,7 @@ body{
 
 #end-screen h1 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  color: #a3a375;
+  color: #7f6000;
 }
 
 input[type=text]{
@@ -124,30 +145,45 @@ input[type=text]{
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 1px;
     box-sizing: border-box;
+    font-size: 15px;
 }
 
-input[type=submit] {
+input[type=button] {
     width: 100%;
-    background-color: #bf7d40;
-    color: white;
+    border: 1px solid #6b4e34;
+    background-color: #b0864b;
+    color: #634930;
+    font-family: 'LumosFontFamily';
+    font-size: 30px;
+    font-weight: bold;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: #bf7d40;
+    background-color: #7a5635;
+}
+
+label {
+    color: #634930;
+    font-family: 'LumosFontFamily';
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #form {
-    width: 70%;
-    border-radius: 5px;
-    background-color: #ffffb3;
+    width: 50%;
+    border-radius: 2px;
     padding: 20px;
+    background: #D1A647;
+  background: -moz-linear-gradient(top, #D1A647 0%, #b0864b 100%);
+  background: -webkit-linear-gradient(top, #D1A647 0%,#b0864b 100%);
+  background: linear-gradient(to bottom, #D1A647 0%,#b0864b 100%);
+
 }
 
 canvas {
@@ -184,30 +220,39 @@ canvas {
   position: absolute;
   top: 100%;
   left: 25%;
-  width: 450px;
+  width: 550px;
   margin-left: -200px;
   font: 300 30px/1 'Lumos', sans-serif;
   text-align: center;
   text-transform: uppercase;
-  color: #fff;
+  color: #B0864B;
   animation: 60s credits linear infinite;
 }
 
 .game {
-  margin-bottom: 50px;
+  margin-bottom: -10px;
   font-size: 100px;
   font-family: 'HarryPotterCustomFont';
   text-transform: capitalize;
 }
 
+.game2{
+   margin-bottom: 50px;
+  font-size: 42px;
+  margin-left: 90px;
+  font-family: 'HarryPotterCustomFont';
+  text-transform: capitalize;
+}
+
 .team {
-  margin-bottom: 5px;
-  font-size: 20px;
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 
  .name {
   margin-bottom: 50px;
   font-size: 35px;
+  color: #f4c743;
 }
 
 @keyframes credits {
@@ -222,13 +267,18 @@ canvas {
 #currentScore {
     width: 250px;
     height: 50px;
-    font-size: 25px;
+    font-size: 30px;
+    font-family: 'LumosCustomFont';
+    font-weight: bold;
     text-align: center;
-    font-family: Courier New, Courier, monospace;
-    background-color: #bf7d40;
-    color: antiquewhite;
+    background: #f4c743;
+    background: -moz-linear-gradient(top, #f4c743 0%, #b0864b 100%);
+    background: -webkit-linear-gradient(top, #f4c743 0%,#b0864b 100%);
+    background: linear-gradient(to bottom, #f4c743 0%,#b0864b 100%);
+    color: #664b33;
+    
     position: absolute;
-    right: 15%;
+    right: 5%;
     top: 20%;
     z-index: 999;
     display: block;

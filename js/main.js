@@ -27,6 +27,13 @@ function mainMenu() {
   show(main);
 };
 
+function createHighScore(){
+  var input = document.getElementById("name").value;
+  scores.update({name: input, points: currScore});
+  input.value = '';
+  createScoreTable(scores);
+}
+
 playBtn.addEventListener('click', function () {
   hide(main);
   active = true; ///TODO: WHAT IS DOING
@@ -60,7 +67,7 @@ submitBtn.addEventListener('click', function () {
 
 window.onkeydown = function (event) {
   // Pressing ESC should hide credits/score and show the menu
-  if (event.keyCode == 27) {
+  if (event.keyCode == 27  && creditsInfo.style.display !== 'none') {
     mainMenu();
   }
 }

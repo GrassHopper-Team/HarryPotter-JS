@@ -1,13 +1,13 @@
 function stop(score) {
     const gameCanvas = document.querySelector('#gameWrapper');
-    const currentScore = document.querySelector('#currentScore');
-
+    const curScore = document.querySelector('#currentScore');
+    
     hide(gameCanvas);
-    hide(currentScore);
+    hide(curScore);
 
     active = false;
     currScore = score.getScore();
     score.resetScore();
-    
+
     show(endScreen);
 }
