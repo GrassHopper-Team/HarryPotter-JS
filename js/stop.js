@@ -3,7 +3,7 @@ function stop(score) {
     const curScore = document.querySelector('#currentScore');
     
     hide(gameCanvas);
-    hide(curScore);
+    curScore.parentNode.removeChild(curScore);
 
     active = false;
     currScore = score.getScore();
