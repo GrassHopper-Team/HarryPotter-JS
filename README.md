@@ -29,12 +29,13 @@ The following team members were randomly chosen to participate in the team proje
 | Plamen Lakov        | *p_lakov*            |
 
 ### Project Purpose:
-Following a team meeting and carefull consideration of our ideas, all team members agreed to fulfill the team project requirements by creating a Harry Potter game. First, a main menu is prompting the user to choose from three options: Play, High Score and Credits. After choosing play one can see the canvas and the main character at the bottom. Around him there coins, holes and bolts. Using the arrow keys of the keyboard the player can navigate his way around the field. The player can collect coins, which will increase his overall score. On the other hand, if Harry gets too close to the holes he can get sucked inside and die. If he gets hit by a bolt, he dies as well. 
+Following a team meeting and careful consideration of our ideas, all team members agreed to fulfill the team project requirements by creating a Harry Potter game. First, a main menu is prompting the user to choose from three options: Play, High Score and Credits. After choosing play one can see the canvas and the main character at the bottom. Around him there coins, holes and bolts. Using the arrow keys of the keyboard the player can navigate his way around the field. The player can collect coins, which will increase his overall score. On the other hand, if Harry gets too close to the holes he can get sucked inside and die. If he gets hit by a bolt, he dies as well. 
 
 ### Screenshots		   
 <img align="center" src="imgs/screenshots/Menu.JPG">
 <img align="center" src="imgs/screenshots/Field.JPG"> 
-<img align="center" src="imgs/screenshots/NameScore.JPG" width="200px" align="right"><img align="center" src="imgs/screenshots/Credits.JPG" width="200px" align="right"> 
+<img align="center" src="imgs/screenshots/NameScore.JPG" width="300px" >
+<img src="imgs/screenshots/Credits.JPG" width="300px"> 
  
-### URL to repository
+### Gameplay Demo
 [**Link to YouTube video**](https://www.youtube.com/watch?v=8CXwSBUuxxY&feature=youtu.be)
